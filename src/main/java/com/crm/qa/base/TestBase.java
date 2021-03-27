@@ -13,6 +13,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.crm.qa.util.WebDriverEvent;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TestBase {
 	public static WebDriver driver;
 	
@@ -23,7 +25,7 @@ public class TestBase {
 		
 		try {
 			pro=new Properties();
-			FileInputStream ip=new FileInputStream("C:\\Users\\Hp\\eclipse-workspace\\FreeCRMTest\\src\\main\\java\\com\\crm\\qa\\config\\config.properties");
+			FileInputStream ip=new FileInputStream("C://Users//Hp//eclipse-Diptee//HotelAdactine//src//main//java//com//crm//qa//config//config.properties");
 		pro.load(ip);
 		} 
 		catch (FileNotFoundException e) 
@@ -43,13 +45,15 @@ public class TestBase {
 		String browsername=pro.getProperty("browser");
 		if(browsername.equalsIgnoreCase("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver","D:\\selenium software\\drivers\\chromedriver.exe" );
-			 driver=new ChromeDriver(); 
+//			System.setProperty("webdriver.chrome.driver","D:\\selenium software\\drivers\\chromedriver.exe" );
+			WebDriverManager.chromedriver().setup();
+			driver=new ChromeDriver(); 
 		}
 		else if(browsername.equalsIgnoreCase("FF"))
 		{
-			System.setProperty("webdriver.gecko.driver","D:\\selenium software\\drivers\\geckodriver.exe" );
-			 driver=new FirefoxDriver();
+//			System.setProperty("webdriver.gecko.driver","D:\\selenium software\\drivers\\geckodriver.exe" );
+			WebDriverManager.firefoxdriver().setup();
+			driver=new FirefoxDriver();
 		}
 		
 		
